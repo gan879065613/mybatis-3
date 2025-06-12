@@ -137,6 +137,7 @@ class MetaClassTest {
     assertEquals(5, meta.getSetterNames().length);
   }
 
+
   @Test
   void shouldFindPropertyName() {
     ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
@@ -145,3 +146,6 @@ class MetaClassTest {
   }
 
 }
+
+
+

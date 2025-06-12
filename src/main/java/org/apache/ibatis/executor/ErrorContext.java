@@ -35,6 +35,7 @@ public class ErrorContext {
   }
 
   public static ErrorContext instance() {
+    // 每个线程第一次调用LOCAL.get()时，都会创建一个新的ErrorContext实例，且该实例只对该线程可见
     return LOCAL.get();
   }
 

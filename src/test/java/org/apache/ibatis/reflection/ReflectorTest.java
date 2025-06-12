@@ -89,9 +89,22 @@ class ReflectorTest {
       return id;
     }
 
+    /**
+     * 与上面的方法返回类型相同，方法名相同，截取get或is后，最终造成有歧义的方法
+     * @return
+     */
+    public Long isId() {
+      return id;
+    }
+
     @Override
     public void setId(Long id) {
       this.id = id;
+    }
+
+    public void setId(String id) {
+      System.out.println(id);
+//      this.id = id;
     }
   }
 
@@ -353,6 +366,8 @@ class ReflectorTest {
     ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
     Reflector reflector = reflectorFactory.findForClass(Bean.class);
     assertTrue((Boolean) reflector.getGetInvoker("bool").invoke(new Bean(), new Byte[0]));
+    Object bool = reflector.getGetInvoker("bool").invoke(new Bean(), new Byte[0]);
+    System.out.println(bool);
   }
 
   @Test
